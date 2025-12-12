@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     {
         Score = 0;
         IsGameActive = true;
-        Time.timeScale = Time.deltaTime; // Ensure time is running
+        Time.timeScale = 1; // Ensure time is running
         SceneManager.LoadScene("GameScene"); // Load the actual level
     }
 
