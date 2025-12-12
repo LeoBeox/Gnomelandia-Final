@@ -17,6 +17,12 @@ public class GameManager : MonoBehaviour
     public AudioClip turretShotClip;
     public AudioClip magicShotClip;
 
+    [Header("Game Settings")]
+    public float matchDuration = 120f; 
+    public float TimeRemaining { get; private set; }
+    public int HighScore { get; private set; }
+    public bool GameWon { get; private set; }
+
     private static GameManager _instance;
     public static GameManager Instance
     {
@@ -59,6 +65,21 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject); // Persist across scenes
     }
 
+    void Update()
+    {
+        if (IsGameActive)
+        {
+            TimeRemaining -= Time.deltaTime;
+
+            // CHECK WIN CONDITION (Time ran out)
+            if (TimeRemaining <= 0)
+            {
+                TimeRemaining = 0;
+                LevelComplete();
+            }
+        }
+    }
+
     private void InitializeForTesting()
     {
         Debug.LogWarning("GameManager was auto-created for testing!");
@@ -72,9 +93,15 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         Score = 0;
+        TimeRemaining = matchDuration; 
         IsGameActive = true;
-        Time.timeScale = 1; // Ensure time is running
-        SceneManager.LoadScene("GameScene"); // Load the actual level
+        GameWon = false;
+
+        // Load the saved high score (default to 0 if none exists)
+        HighScore = PlayerPrefs.GetInt("HighScore", 0);
+
+        Time.timeScale = 1; 
+        SceneManager.LoadScene("GameScene"); 
     }
 
     public void PlaySFX(AudioClip clip)
@@ -92,11 +119,29 @@ public class GameManager : MonoBehaviour
         Debug.Log("Current Score: " + Score);
     }
 
+    private void LevelComplete()
+    {
+        GameWon = true;
+        GameOver();
+    }
+    
     public void GameOver()
     {
         IsGameActive = false;
-        Time.timeScale = 0; 
-        Debug.Log("Game Over!");
+        Time.timeScale = 0;
+
+        if (Score > HighScore)
+        {
+            HighScore = Score;
+            // Save to disk so it remembers after you quit
+            PlayerPrefs.SetInt("HighScore", HighScore);
+            PlayerPrefs.Save();
+        }
+
+        Debug.Log("Game Over! Final Score: " + Score);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void QuitGame()

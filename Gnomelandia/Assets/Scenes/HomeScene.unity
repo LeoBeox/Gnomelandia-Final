@@ -218,7 +218,7 @@ RectTransform:
   m_GameObject: {fileID: 96815015}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1793778522}
@@ -617,6 +617,7 @@ MonoBehaviour:
   jumpClip: {fileID: 8300000, guid: 97d0503704ffd439cb4626cf4c829062, type: 3}
   turretShotClip: {fileID: 8300000, guid: d9386f4c2afa74469b80183c4ad3a370, type: 3}
   magicShotClip: {fileID: 8300000, guid: fd73325fc5513405da470719a5246750, type: 3}
+  matchDuration: 120
 --- !u!4 &298657953
 Transform:
   m_ObjectHideFlags: 0

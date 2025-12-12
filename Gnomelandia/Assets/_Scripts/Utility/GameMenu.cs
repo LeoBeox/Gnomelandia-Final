@@ -7,6 +7,7 @@ public class GameMenu : MonoBehaviour
     [Header("UI References")]
     public GameObject menuPanel;      
     public TextMeshProUGUI titleText; 
+    public TextMeshProUGUI highScoreText;
 
     void Update()
     {
@@ -70,6 +71,22 @@ public class GameMenu : MonoBehaviour
     {
         menuPanel.SetActive(true);
         titleText.text = "GAME OVER";
+
+        int currentScore = GameManager.Instance.Score;
+        int highScore = GameManager.Instance.HighScore;
+
+        if (GameManager.Instance.GameWon)
+        {
+            titleText.text = "SURVIVED!";
+            titleText.color = Color.green;
+        }
+        else
+        {
+            titleText.text = "DEFEAT";
+            titleText.color = Color.red;
+        }
+
+        highScoreText.text = $"Score: {currentScore}\nHigh Score: {highScore}";
         
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
