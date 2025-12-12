@@ -1,12 +1,14 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using System.Collections;
+using System;
 
 public class Health : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] public int maxHealth;
 
-    private int CurrentHealth;
+    [NonSerialized] public int CurrentHealth;
  
     void Start()
     {
@@ -26,8 +28,19 @@ public class Health : MonoBehaviour
         CurrentHealth -= damageAmount;
     }
 
-    void Die()
+    private void Die()
     {
+        if (gameObject.CompareTag("GoldenAppleTree"))
+        {
+            GameManager.Instance.GameOver();
+        }
+        
+        if (gameObject.CompareTag("Enemy"))
+        {
+            GameManager.Instance.AddScore(10);
+        }
+        
         Destroy(gameObject);
+
     }
 }

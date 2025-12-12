@@ -26,5 +26,23 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         // _agent.SetDestination(_target.transform.position);
+
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("GoldenAppleTree"))
+        {
+            Health treeHealth = other.GetComponent<Health>();
+            
+            if (treeHealth != null)
+            {
+                // Deal damage to the tree
+                treeHealth.TakeDamage(1); 
+                
+                Destroy(gameObject);
+            }
+        }
     }
 }
