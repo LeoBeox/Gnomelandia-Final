@@ -15,6 +15,7 @@ public class FPSInput : MonoBehaviour
     [SerializeField] float _sprintSpeed = 10.0f;
     [SerializeField] float _gravity = -9.8f;
     [SerializeField] float _jumpSpeed = 15f;
+    private bool _isBoosted = false;
     CharacterController _controller;
 
     float _verticalVelocity;
@@ -87,5 +88,35 @@ public class FPSInput : MonoBehaviour
         // Move
         _controller.Move(movement);
 
+    }
+
+    public void ActivateSpeedBoost(float duration)
+    {
+        // Only activate if we aren't already fast
+        if (!_isBoosted)
+        {
+            StartCoroutine(SpeedBoostRoutine(duration));
+        }
+    }
+
+    System.Collections.IEnumerator SpeedBoostRoutine(float duration)
+    {
+        _isBoosted = true;
+        
+        // speed boost
+        _speed *= 2;
+        _sprintSpeed *= 2;
+
+        Debug.Log("Speed Boost Activated!");
+
+        // wait
+        yield return new WaitForSeconds(duration);
+
+        // reset
+        _speed /= 2;
+        _sprintSpeed /= 2;
+        
+        _isBoosted = false;
+        Debug.Log("Speed Boost Ended.");
     }
 }

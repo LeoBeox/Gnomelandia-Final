@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] public float spawnInterval;  
 
     private float timer = 0f;
+    private float counter = 0f;
 
     void Update()
     {
@@ -19,6 +20,12 @@ public class EnemySpawner : MonoBehaviour
         {
             SpawnEnemy();
             timer = 0f; // Reset timer
+            counter += 1;
+            if (counter >= 10 && spawnInterval!=0.5)
+            {
+                spawnInterval -= 0.5f;
+                counter = 0;
+            }
         }
     }
 
