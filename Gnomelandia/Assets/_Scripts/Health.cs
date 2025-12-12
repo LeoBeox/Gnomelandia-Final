@@ -1,16 +1,33 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Stats")]
+    [SerializeField] public int maxHealth;
+
+    private int CurrentHealth;
+ 
     void Start()
     {
-        
+        CurrentHealth = maxHealth;
     }
 
-    // Update is called once per frame
     void Update()
+    {   
+        if (CurrentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void TakeDamage(int damageAmount)
+    {  
+        CurrentHealth -= damageAmount;
+    }
+
+    void Die()
     {
-        
+        Destroy(gameObject);
     }
 }
