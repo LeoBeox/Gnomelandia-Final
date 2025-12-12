@@ -14,6 +14,8 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
     
+        if (Time.timeScale == 0) return;
+        
         if (Input.GetKeyDown(KeyCode.Mouse0)) 
         {
             ShootMagic();

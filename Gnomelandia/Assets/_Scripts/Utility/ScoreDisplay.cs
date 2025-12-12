@@ -1,7 +1,5 @@
 using UnityEngine;
 using TMPro;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 
 public class ScoreDisplay : MonoBehaviour
 {
