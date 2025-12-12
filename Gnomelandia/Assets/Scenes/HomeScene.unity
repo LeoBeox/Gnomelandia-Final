@@ -588,6 +588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 298657953}
   - component: {fileID: 298657952}
+  - component: {fileID: 298657954}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -607,6 +608,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84c58cb4c0f68436dba6bde80de322c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  _sfxSource: {fileID: 298657954}
+  buttonClickClip: {fileID: 8300000, guid: 3da2bca29f2ec4673a93bd94e1f41982, type: 3}
+  plantClip: {fileID: 8300000, guid: 5a4a6e0ffa66f44088ceabd9e4026bab, type: 3}
+  enemyHitClip: {fileID: 8300000, guid: 5e38772ccc533478d9a84a7b29990d7f, type: 3}
+  meleeSwingClip: {fileID: 8300000, guid: 0c13c854b50064a749743f559e65b703, type: 3}
+  treeHurtClip: {fileID: 8300000, guid: cc45ac0debff140acb52303937fee39d, type: 3}
+  jumpClip: {fileID: 8300000, guid: 97d0503704ffd439cb4626cf4c829062, type: 3}
+  turretShotClip: {fileID: 8300000, guid: d9386f4c2afa74469b80183c4ad3a370, type: 3}
+  magicShotClip: {fileID: 8300000, guid: fd73325fc5513405da470719a5246750, type: 3}
 --- !u!4 &298657953
 Transform:
   m_ObjectHideFlags: 0
@@ -622,6 +632,103 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &298657954
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298657951}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &351585503
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,6 +815,18 @@ MonoBehaviour:
       - m_Target: {fileID: 113043156}
         m_TargetAssemblyTypeName: HomeScreenUI, Assembly-CSharp
         m_MethodName: OnStartButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 113043156}
+        m_TargetAssemblyTypeName: HomeScreenUI, Assembly-CSharp
+        m_MethodName: PlayButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2213,6 +2332,18 @@ MonoBehaviour:
       - m_Target: {fileID: 113043156}
         m_TargetAssemblyTypeName: HomeScreenUI, Assembly-CSharp
         m_MethodName: OnQuitButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 113043156}
+        m_TargetAssemblyTypeName: HomeScreenUI, Assembly-CSharp
+        m_MethodName: PlayButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

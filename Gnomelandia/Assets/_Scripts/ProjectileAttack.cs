@@ -29,7 +29,15 @@ public class ProjectileAttack : MonoBehaviour
         if (!other.CompareTag("Player"))
         {
             targetHealth.TakeDamage(_damage);
+
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.PlaySFX(GameManager.Instance.enemyHitClip);
+            }
+            
             Destroy(gameObject);
         }
+
+        
     }
 }

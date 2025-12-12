@@ -59,6 +59,11 @@ public class FPSInput : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 _verticalVelocity += _jumpSpeed;
+
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.PlaySFX(GameManager.Instance.jumpClip);
+                }
             }
         }
         else

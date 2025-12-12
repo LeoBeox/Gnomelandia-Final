@@ -93,4 +93,10 @@ public class GameMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("HomeScene");
     }
+
+    public void PlayButtonSound()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.PlaySFX(GameManager.Instance.buttonClickClip);
+    }
 }

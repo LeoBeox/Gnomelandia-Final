@@ -39,6 +39,11 @@ public class PlantingPlot : MonoBehaviour
 
         _isPlanted = true;
         Debug.Log("Planted!");
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.PlaySFX(GameManager.Instance.plantClip);
+        }
     }
     
     // Detect when Player walks onto the plot

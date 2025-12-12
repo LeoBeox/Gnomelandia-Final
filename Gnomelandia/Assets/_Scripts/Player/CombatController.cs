@@ -28,13 +28,24 @@ public class PlayerCombat : MonoBehaviour
     }
 
     void ShootMagic()
-    {
-        // Spawn bullet at the firePoint location
+    {  
+       // Spawn bullet at the firePoint location
         Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.PlaySFX(GameManager.Instance.magicShotClip);
+        }
     }
 
     IEnumerator SwingShovel()
     {
+        
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.PlaySFX(GameManager.Instance.meleeSwingClip);
+        }
+        
         meleeHitbox.SetActive(true); // Turn on the hitbox
         
         // Wait for a split second

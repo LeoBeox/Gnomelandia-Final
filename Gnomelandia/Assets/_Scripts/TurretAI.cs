@@ -67,6 +67,10 @@ public class TurretAI : MonoBehaviour
         if (projectilePrefab != null && firePoint != null)
         {
             GameObject bullet = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.PlaySFX(GameManager.Instance.turretShotClip);
+            }
         }
     }
 }

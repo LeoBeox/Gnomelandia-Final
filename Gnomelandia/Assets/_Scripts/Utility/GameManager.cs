@@ -1,8 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class GameManager : MonoBehaviour
 {
+    
+    [SerializeField] private AudioSource _sfxSource;
+
+    [Header("Clips")]
+    public AudioClip buttonClickClip;
+    public AudioClip plantClip;
+    public AudioClip enemyHitClip; 
+    public AudioClip meleeSwingClip;
+    public AudioClip treeHurtClip;
+    public AudioClip jumpClip;
+    public AudioClip turretShotClip;
+    public AudioClip magicShotClip;
+
     private static GameManager _instance;
     public static GameManager Instance
     {
@@ -29,6 +43,8 @@ public class GameManager : MonoBehaviour
     public int Score { get; private set; }
     public bool IsGameActive { get; private set; }
 
+
+    
     private void Awake()
     {
        
@@ -59,6 +75,15 @@ public class GameManager : MonoBehaviour
         IsGameActive = true;
         Time.timeScale = 1; // Ensure time is running
         SceneManager.LoadScene("GameScene"); // Load the actual level
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        if (clip != null && _sfxSource != null)
+        {
+            
+            _sfxSource.PlayOneShot(clip);
+        }
     }
 
     public void AddScore(int amount)

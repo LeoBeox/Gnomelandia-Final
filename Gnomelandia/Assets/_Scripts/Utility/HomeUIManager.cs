@@ -27,4 +27,10 @@ public class HomeScreenUI : MonoBehaviour
             Debug.LogError("GameManager instance not found! Can't quit.");
         }
     }
+
+    public void PlayButtonSound()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.PlaySFX(GameManager.Instance.buttonClickClip);
+    }
 }

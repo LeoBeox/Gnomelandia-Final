@@ -26,6 +26,11 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {  
         CurrentHealth -= damageAmount;
+
+        if (gameObject.CompareTag("GoldenAppleTree") && GameManager.Instance != null)
+        {
+            GameManager.Instance.PlaySFX(GameManager.Instance.treeHurtClip);
+        }
     }
 
     private void Die()
